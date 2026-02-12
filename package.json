@@ -2,11 +2,36 @@
   "name": "@atoms-demo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
   "private": true,
-  "dependencies": {},
+  "engines": {
+    "node": ">=20.20.0",
+    "pnpm": ">=10.28.1"
+  },
+  "packageManager": "pnpm@10.28.1",
+  "scripts": {
+    "start": "nx serve",
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test",
+    "lint": "nx run-many -t lint",
+
+    "format": "nx format:write",
+    "format:check": "nx format:check",
+    "typecheck": "nx run-many -t typecheck",
+    "lint:fix": "nx run-many -t lint --fix",
+
+    "affected:build": "nx affected -t build",
+    "affected:test": "nx affected -t test",
+    "affected:lint": "nx affected -t lint",
+
+    "graph": "nx graph",
+    "clear": "nx reset",
+    "prepare": "husky"
+  },
   "devDependencies": {
     "@nx/js": "22.5.0",
+    "@nx/nest": "^22.5.0",
+    "@nx/next": "^22.5.0",
+    "@nx/react": "^22.5.0",
     "@nx/workspace": "22.5.0",
     "nx": "22.5.0"
   }
