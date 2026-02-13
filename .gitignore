@@ -1,46 +1,206 @@
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# compiled output
-dist
-tmp
+# =======================================================
+# Atoms Board Enterprise .gitignore (Final_v3.1)
+# Stack: Nx, NestJS, Next.js, Prisma, Docker, Oracle/AWS
+# Merged: Default Nx rules + Enterprise Security
+# =======================================================
+
+# -------------------------------------------------------
+# [1] Dependencies & Package Managers
+# -------------------------------------------------------
+node_modules/
+.pnpm-debug.log*
+pnpm-lock.yaml.merge-conflict.*
+# 타 패키지 매니저 락파일 혼용 방지
+package-lock.json
+yarn.lock
+shrinkwrap.yaml
+
+# [Security] 개인 인증 토큰이 포함될 수 있는 로컬 설정
+.npmrc.local
+.yarnrc.yml
+
+# -------------------------------------------------------
+# [2] Nx & Build System
+# -------------------------------------------------------
+dist/
+tmp/
+out/
+build/
 out-tsc
+.nx/cache/
+.nx/workspace-data/
+.nx/project-graph.json
+.nx/
+*.nx-results.json
+report.html
 
-# dependencies
-node_modules
+# 🆕 Turborepo Compatibility (혹시 모를 혼용 대비)
+.turbo/
 
-# IDEs and editors
-/.idea
+# -------------------------------------------------------
+# [3] Frameworks (Frontend & Backend)
+# -------------------------------------------------------
+# Next.js
+.next/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+.swc/
+
+# Bundle Analyzer Reports
+.next/analyze/
+analyze/
+*.bundle-analyzer.html
+
+# Logs & Analysis
+npm-debug.log*
+yarn-error.log
+yarn-debug.log*
+testem.log
+/libpeerconnection.log
+/connect.lock
+
+# Vite & Vitest
+.vite/
+*.timestamp*
+
+# NestJS / Serverless
+.serverless/
+.webpack/
+
+# Style Caches
+/.sass-cache
+
+# -------------------------------------------------------
+# [4] Database & Prisma
+# -------------------------------------------------------
+*.db
+*.db-journal
+*.sqlite
+*.sqlite-journal
+/generated/prisma
+prisma/*.log
+
+# -------------------------------------------------------
+# [5] Environment & Secrets (Zero Trust)
+# -------------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.test.example
+
+# -------------------------------------------------------
+# [6] Infrastructure (Cloud/Docker/Terraform)
+# -------------------------------------------------------
+docker-compose.override.yml
+docker-compose.local.yml
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+.aws/
+.oci/
+.azure/
+.gcloud/
+
+# -------------------------------------------------------
+# [7] Monitoring, Quality & Debugging
+# -------------------------------------------------------
+# Sentry & SonarQube
+.sentryclirc
+.scannerwork/
+.sonarqube/
+
+# E2E Artifacts
+cypress/videos/
+cypress/screenshots/
+playwright-report/
+test-results/
+
+# CI Reports
+junit.xml
+*coverage.xml
+cobertura-coverage.xml
+coverage/
+/coverage
+.nyc_output/
+
+# 🆕 Node.js Heap Dumps (메모리 덤프 - 용량 폭탄 방지)
+*.heapsnapshot
+*.heapprofile
+
+# -------------------------------------------------------
+# [8] IDE - VSCode (Collaborative Settings)
+# -------------------------------------------------------
+.vscode/*
+# 팀원들과 공유할 설정은 예외(!)로 둡니다.
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# -------------------------------------------------------
+# [9] Other IDEs & Editors & Local History
+# -------------------------------------------------------
+.idea/
 .project
 .classpath
 .c9/
 *.launch
 .settings/
 *.sublime-workspace
+.history/
+*.swp
+*.swo
+*.iml
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# -------------------------------------------------------
+# [10] Local SSL Certificates (mkcert)
+# -------------------------------------------------------
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.pfx
+localhost*
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
+# -------------------------------------------------------
+# [11] OS System Files
+# -------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Trashes
+.Spotlight-V100
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Legacy
 /typings
 
-# System Files
-.DS_Store
-Thumbs.db
+# -------------------------------------------------------
+# [12] Miscellaneous & Fail-safe
+# -------------------------------------------------------
+# Logs
+logs/
+*.log
 
-.nx/cache
-.nx/workspace-data
+# Backups
+*.bak
+*.old
+*.orig
+*.patch
+*.diff
 
-# Next.js
-.next
-out
+# SSH Keys
+id_rsa
+id_rsa.pub
+*.ppk
+*.ovpn
