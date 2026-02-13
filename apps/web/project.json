@@ -4,12 +4,17 @@
   "sourceRoot": "apps/web",
   "projectType": "application",
   "tags": [],
-  "// targets": "to see all targets run: nx show project web --web",
   "targets": {
     "dev": {
       "options": {
-        "args": ["--turbo"]
-      }
+        "args": [
+          "--turbo"
+        ],
+        "proxyConfig": "apps/web/proxy.conf.json"
+      },
+      "dependsOn": [
+        "api:serve"
+      ]
     }
   }
 }
